@@ -123,6 +123,8 @@ static unique_ptr<Catalog> PolarisCatalogAttach(StorageExtensionInfo *storage_in
 		throw BinderException("Secret with name \"%s\" not found", secret_name);
 	}
 
+	// TODO: Check catalog with name actually exists!
+
 	return make_uniq<UCCatalog>(db, info.path, access_mode, credentials);
 }
 
@@ -166,8 +168,8 @@ std::string PolarisExtension::Name() {
 }
 
 std::string PolarisExtension::Version() const {
-#ifdef EXT_VERSION_UC_CATALOG
-	return EXT_VERSION_UC_CATALOG;
+#ifdef EXT_VERSION_POLARIS
+	return EXT_VERSION_POLARIS;
 #else
 	return "";
 #endif
