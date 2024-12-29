@@ -1,0 +1,17 @@
+{
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "GEN=ninja make debug", // or your specific build command
+            "args": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Generated task by Makefile."
+        }
+    ],
+    "version": "2.0.0"
+}
