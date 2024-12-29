@@ -6,10 +6,12 @@ You can try it out using DuckDB (>= v1.0.0) by running:
 ```SQL
 INSTALL '/path/to/polaris.duckdb_extension';
 INSTALL iceberg;
-LOAD iceberg;
+INSTALL httpfs;
 LOAD polaris;
+LOAD iceberg;
+LOAD httpfs;
 CREATE SECRET (
-	TYPE PC,
+	TYPE POLARIS,
 	CLIENT_ID '${PC_CLIENT_ID}',
 	CLIENT_SECRET '${PC_CLIENT_SECRET}',
 	ENDPOINT '${PC_ENDPOINT}',
@@ -23,7 +25,8 @@ SELECT * FROM test_catalog.test_schema.test_table;
 # How to build from source
 
 ```
-git clone ...
+git clone https://github.com/fivetran/duckdb-polaris.git
+git submodule update --init --recursive
 brew install ninja
 GEN=Ninja make {debug/release}
 ```
