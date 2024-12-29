@@ -1,13 +1,16 @@
 # Polarity Catalog Extension
 This is a proof-of-concept extension demonstrating DuckDB connecting to the Polaris Catalog to read Iceberg tables using the [iceberg extension](https://github.com/duckdb/duckdb-iceberg).
 
-You can try it out using DuckDB (>= v1.0.0) by running:
+You can try it out using DuckDB (>= v1.0.0) by doing the following:
+```bash
+DYLD_INSERT_LIBRARIES=/Library/Developer/CommandLineTools/usr/lib/clang/16/lib/darwin/libclang_rt.asan_osx_dynamic.dylib duckdb --unsigned
+```
 
 ```SQL
 INSTALL '/path/to/polaris.duckdb_extension';
 INSTALL iceberg;
 INSTALL httpfs;
-LOAD polaris;
+LOAD '/path/to/polaris.duckdb_extension';
 LOAD iceberg;
 LOAD httpfs;
 CREATE SECRET (
